@@ -1,14 +1,15 @@
-import { ButtonCardProduct } from './components/Button/styles'
-import Header from './components/Header'
-import { Container, GlobalCss } from './styles'
+import { BrowserRouter } from 'react-router-dom'
+import Footer from './components/Footer'
+import Rotas from './routes'
+import { GlobalCSS } from './styles'
 
 function App() {
   return (
-    <>
-      <GlobalCss />
-      <Header />
-      <Container></Container>
-    </>
+    <BrowserRouter>
+      <GlobalCSS />
+      <Rotas />
+      <Footer />
+    </BrowserRouter>
   )
 }
 

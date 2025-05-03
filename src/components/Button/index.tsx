@@ -1,9 +1,32 @@
-import { ButtonCardProduct } from './styles'
+import { ButtonContainer, ButtonLink } from './styles'
 
-export const ButtonCard = () => (
-  <>
-    <ButtonCardProduct>Saiba Mais</ButtonCardProduct>
-  </>
-)
+export type Props = {
+  type: 'button' | 'link'
+  title: string
+  to?: string
+  onClick?: () => void
+  children: string
+  background: 'light' | 'dark'
+}
 
-export default ButtonCard
+const Botao = ({ type, children, title, to, onClick, background }: Props) => {
+  if (type === 'button') {
+    return (
+      <ButtonContainer
+        background={background}
+        type="button"
+        title={title}
+        onClick={onClick}
+      >
+        {children}
+      </ButtonContainer>
+    )
+  }
+  return (
+    <ButtonLink to={to as string} title={title}>
+      {children}
+    </ButtonLink>
+  )
+}
+
+export default Botao
