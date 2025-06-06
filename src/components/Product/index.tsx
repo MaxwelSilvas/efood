@@ -1,7 +1,10 @@
-// Importa os componentes Link e useLocation da biblioteca react-router-dom
-import { Link, useLocation } from 'react-router-dom'
-
-// Importa os estilos personalizados e componentes estilizados
+import React, { useState } from 'react'
+import { useLocation } from 'react-router-dom'
+import RestaurantRatingImg from '../../assets/icons/estrela.png'
+import Tag from '../../components/Tag'
+import { CardapioItem } from '../../pages/Perfil'
+import Botao from '../Button'
+import ModalPoupap from '../Modal'
 import {
   CardConteiner,
   CardRestaurant,
@@ -12,73 +15,120 @@ import {
   RatingStar
 } from './styles'
 
-// Importa a imagem da estrela de classificação do restaurante
-import RestaurantRatingImg from '../../assets/icons/estrela.png'
-
-// Importa o componente Tag
-import Tag from '../../components/Tag'
-import Botao from '../Button'
-
-// Define o tipo Props para tipar as propriedades que o componente MockUp espera receber
-export type Props = {
-  title: string
-  description: string
-  infos: string[]
-  nota: string
-  image: string
-  background: 'light' | 'dark'
+export type Efood = {
+  id: string
+  capa: string
+  tipo: string
+  destacado: boolean
+  titulo: string
+  avaliacao: number
+  descricao: string
+  cardapio: CardapioItem[]
 }
 
-// Define o componente funcional MockUp que recebe propriedades do tipo Props
-const Products = ({ title, description, infos, nota, image }: Props) => {
-  const location = useLocation() // Usa o hook useLocation para obter a localização atual da URL
+type ProductProps = {
+  image: string
+  infos: string[]
+  title: string
+  nota: number
+  description: string
+  to: string
+  background: 'light' | 'dark'
+  currentItem: CardapioItem | null
+  shouldTruncateDescription?: boolean
+  id: string
+}
 
-  // Define o texto no botão baseado na localização atual
-  const buttonText =
-    location.pathname === '/Perfil' ? 'Adicionar ao carrinho' : 'Saiba mais'
+const Product: React.FC<ProductProps> = ({
+  image,
+  infos,
+  title,
+  nota,
+  description,
+  to,
+  background,
+  currentItem,
+  shouldTruncateDescription = false,
+  id
+}) => {
+  const location = useLocation()
+  const [isModalVisible, setIsModalVisible] = useState(false)
+
+  const toggleModal = () => {
+    setIsModalVisible(!isModalVisible)
+  }
+
+  const buttonText = location.pathname.startsWith(`/perfil/${id}`)
+    ? 'Adicionar ao carrinho'
+    : 'Saiba mais'
+
+  const getTruncatedDescription = (description: string) => {
+    if (description && description.length > 160) {
+      return description.slice(0, 160) + '...'
+    }
+    return description
+  }
 
   return (
     <div className="container">
-      <>
-        <CardConteiner>
-          <CardRestaurant>
-            {/* Define a imagem de fundo do restaurante */}
-            <Imagem style={{ backgroundImage: `url(${image})` }} />
-            <Infos>
-              {/* Mapeia as informações e renderiza o componente Tag para cada uma */}
-              {infos.map((info) => (
-                <Tag key={info}>{info}</Tag>
-              ))}
-            </Infos>
-            <ContainerDescritivo>
-              <LineSection>
-                {/* Renderiza o título do card */}
-                <h3 className="tituloCard">{title}</h3>
-                <div className="Rating">
-                  {/* Renderiza a nota e a imagem de classificação */}
-                  <h3 className="nota">{nota}</h3>
-                  <RatingStar
-                    style={{ backgroundImage: `url(${RestaurantRatingImg})` }}
-                  />
-                </div>
-              </LineSection>
-              {/* Renderiza a descrição do card */}
-              <p>{description}</p>
-              {/* Renderiza um Link que leva para a página de perfil com um botão de tag */}
-              <Link to="/Perfil">
-                <Tag size="big">
-                  <Botao type="button" title={buttonText} background={'light'}>
-                    {buttonText}
-                  </Botao>
-                </Tag>
-              </Link>
-            </ContainerDescritivo>
-          </CardRestaurant>
-        </CardConteiner>
-      </>
+      <CardConteiner>
+        <CardRestaurant>
+          <Imagem style={{ backgroundImage: `url(${image})` }} />
+          <Infos>
+            {infos.map((info, index) => (
+              <Tag key={index}>{info}</Tag>
+            ))}
+          </Infos>
+          <ContainerDescritivo>
+            <LineSection>
+              <h3 className="tituloCard">{title}</h3>
+              <div className="Rating">
+                <h3 className="nota">{nota}</h3>
+                <RatingStar
+                  style={{ backgroundImage: `url(${RestaurantRatingImg})` }}
+                />
+              </div>
+            </LineSection>
+            <p>
+              {shouldTruncateDescription &&
+              location.pathname.startsWith(`/perfil/${id}`)
+                ? getTruncatedDescription(description)
+                : description}
+            </p>
+            {location.pathname.startsWith(`/perfil/${id}`) ? (
+              <Botao
+                type="button"
+                onClick={toggleModal}
+                title={buttonText}
+                background={background}
+              >
+                {buttonText}
+              </Botao>
+            ) : (
+              <Botao
+                type="link"
+                to={to}
+                title={buttonText}
+                background={background}
+              >
+                {buttonText}
+              </Botao>
+            )}
+          </ContainerDescritivo>
+        </CardRestaurant>
+      </CardConteiner>
+      {isModalVisible && currentItem && (
+        <ModalPoupap
+          onClose={toggleModal}
+          foto={currentItem.foto}
+          descricao={currentItem.descricao}
+          porcao={currentItem.porcao}
+          preco={currentItem.preco}
+          nome={currentItem.nome}
+        />
+      )}
     </div>
   )
 }
 
-// Exporta o componente MockUp como padrão
-export default Products
+export default Product

@@ -9,7 +9,6 @@ import {
   Titulo
 } from './styles'
 
-// Importando imagens
 import LogoImgHome from '../../assets/icons/logo.png'
 import BannerImgHome from '../../assets/images/BannerImgHome.png'
 
@@ -18,15 +17,13 @@ export type Props = {
 }
 
 const Header = ({ background }: Props) => {
-  const location = useLocation() // useLocation para obter a localização atual da pagina que estou
+  const location = useLocation()
 
-  // Defini o texto na localização atual
   const titleText =
     location.pathname === '/Perfil'
       ? ''
       : 'Viva experiências gastronômicas no conforto da sua casa'
 
-  // Defini o texto na localização atual
   const titleRestaurate = location.pathname === '/Perfil' ? 'Restaurantes' : ''
   const titleCarrinho =
     location.pathname === '/Perfil' ? '0 produto(s) no carrinho' : ''

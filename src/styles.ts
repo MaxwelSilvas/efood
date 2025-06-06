@@ -19,15 +19,15 @@ export const GlobalCSS = createGlobalStyle`
 
   body {
     background-color: ${colors.creamyWhite};
-    color: ${colors.rosePink};
-    font-family: Roboto, sans-serif;
+    color:${colors.rosePink};
+    font-family:Roboto, sans-serif;
     text-decoration: none;
     list-style-type: none;
   }
-
   .container {
-    max-width: 1366px;
-    width: 100%;
-    margin: 0 auto;
-  }
+  max-width: 1366px;
+  width: 100%;
+  margin: 0 auto;
+}
+
 `
