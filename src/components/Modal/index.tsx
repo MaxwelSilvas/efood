@@ -1,22 +1,16 @@
-// Recursos externos
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-// Imagens
 import ImgPoupapClose from '../../assets/icons/close.png'
 
-// Funções
 import { add, CartItem, open } from '../../store/reducers/cart'
 
-// Componentes
 import Botao from '../Button'
 import Tag from '../Tag'
 
-// Estilos
 import { parseToBrl } from '../../utils'
 import * as S from './styles'
 
-// Define a interface do ModalPoupapProps
 interface ModalPoupapProps {
   onClose: () => void
   foto: string
@@ -41,7 +35,7 @@ const ModalPoupap: React.FC<ModalPoupapProps> = ({
 
   const handleAddToCart = () => {
     const item: CartItem = {
-      id: Date.now(), // Gere um ID único ou modifique conforme necessário
+      id: Date.now(),
       foto,
       descricao,
       preco,

@@ -38,7 +38,7 @@ export const InputGroup = styled.div`
     text-align: left;
 
     &.error {
-      border: 2px solid red; /* Borda preta para campos com erro */
+      border: 2px solid red;
       background: ${colors.CrimsonRed};
     }
   }
@@ -73,7 +73,7 @@ export const InputGroupPaymentBlock = styled.div`
 
   input,
   select {
-    width: 100%; /* Ajusta a largura do input ao contêiner */
+    width: 100%;
     height: 32px;
     background-color: ${colors.BlanchedAlmond};
     border: none;
@@ -84,7 +84,7 @@ export const InputGroupPaymentBlock = styled.div`
     text-align: left;
 
     &.error {
-      border: 2px solid red; /* Borda preta para campos com erro */
+      border: 2px solid red;
       background: ${colors.CrimsonRed};
     }
   }
@@ -100,7 +100,7 @@ export const InputGroupPaymentFlex = styled.div`
   .InputCvv {
     display: flex;
     flex-direction: column;
-    width: 100%; /* Garante que as divs se ajustem ao contêiner pai */
+    width: 100%;
   }
 
   .InputNumbCard {
@@ -117,7 +117,7 @@ export const InputGroupPaymentFlex = styled.div`
       text-align: left;
 
       &.error {
-        border: 2px solid red; /* Borda preta para campos com erro */
+        border: 2px solid red;
         background: ${colors.CrimsonRed};
       }
     }
@@ -137,7 +137,7 @@ export const InputGroupPaymentFlex = styled.div`
       text-align: left;
 
       &.error {
-        border: 2px solid red; /* Borda preta para campos com erro */
+        border: 2px solid red;
         background: ${colors.CrimsonRed};
       }
     }
@@ -157,10 +157,10 @@ export const InputGroupPaymentFlex = styled.div`
   select {
     height: 32px;
     background-color: ${colors.BlanchedAlmond};
-    border: 1px solid ${colors.LightSalmon}; /* Borda padrão */
+    border: 1px solid ${colors.LightSalmon};
 
     &.error {
-      border: 2px solid red; /* Borda preta para campos com erro */
+      border: 2px solid red;
       background: ${colors.CrimsonRed};
     }
   }
@@ -211,7 +211,7 @@ export const ModalOverlay = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000; // Certifique-se de que está acima de outros conteúdos
+  z-index: 1000;
 `
 
 export const ModalContent = styled.div`

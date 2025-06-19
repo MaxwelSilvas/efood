@@ -1,10 +1,7 @@
-// Recursos externos
 import { useParams } from 'react-router-dom'
 
-// Funções
 import { useGetFeatureEfoodQuery } from '../../services/api'
 
-// Componentes
 import Banner from '../../components/Banner'
 import Header from '../../components/Header'
 import ProductList from '../../components/ProductList'

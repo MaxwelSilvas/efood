@@ -1,8 +1,7 @@
-// Recursos externos
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export interface CartItem {
-  id: number // Identificador único do item
+  id: number
   foto: string
   descricao: string
   preco: number

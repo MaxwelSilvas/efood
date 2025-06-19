@@ -16,13 +16,11 @@ export const ButtonContainer = styled.button<{ background: 'light' | 'dark' }>`
   text-align: center;
   cursor: pointer;
 
-  /* Foco para acessibilidade */
   &:focus {
     outline: 2px solid ${colors.BlanchedAlmond};
     outline-offset: 4px;
   }
 
-  /* Estilo responsivo */
   @media (max-width: 768px) {
     max-width: 100%;
   }
@@ -45,13 +43,11 @@ export const ButtonLink = styled(Link)<{ background: 'light' | 'dark' }>`
   padding: 4px 6px;
   margin-left: 8px;
 
-  /* Foco para acessibilidade */
   &:focus {
     outline: 2px solid ${colors.BlanchedAlmond};
     outline-offset: 4px;
   }
 
-  /* Estilo responsivo */
   @media (max-width: 768px) {
     max-width: 100%;
   }

@@ -1,7 +1,5 @@
-// Recursos externos
 import { ReactNode } from 'react'
 
-// Estilos
 import { TagContainer } from './styles'
 
 export type Props = {

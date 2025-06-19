@@ -24,7 +24,6 @@ export const Poupap = styled.div`
   background-color: ${colors.LightSalmon};
   z-index: 1;
 
-  /* Estilo para tablet */
   @media (max-width: ${breakpoints.tablet}) {
     flex-direction: column;
     width: 90%;
@@ -32,7 +31,6 @@ export const Poupap = styled.div`
     padding: 24px;
   }
 
-  /* Estilo para mobile */
   @media (max-width: ${breakpoints.mobile}) {
     flex-direction: column;
     width: 90%;
@@ -47,7 +45,6 @@ export const Poupap = styled.div`
     color: ${colors.white};
     margin-bottom: 16px;
 
-    /* Estilo para mobile */
     @media (max-width: ${breakpoints.mobile}) {
       font-size: 16px;
       margin-bottom: 12px;
@@ -63,12 +60,10 @@ export const Poupap = styled.div`
     color: ${colors.white};
     margin: 16px 0;
 
-    /* Estilo para tablet */
     @media (max-width: ${breakpoints.tablet}) {
       width: 100%;
     }
 
-    /* Estilo para mobile */
     @media (max-width: ${breakpoints.mobile}) {
       font-size: 13px;
       line-height: 20px;
@@ -82,7 +77,6 @@ export const Poupap = styled.div`
     color: ${colors.LightSalmon};
     margin-bottom: 27px;
 
-    /* Estilo para mobile */
     @media (max-width: ${breakpoints.mobile}) {
       width: 100%;
       text-align: center;
@@ -93,7 +87,6 @@ export const Poupap = styled.div`
 export const SectionImgModal = styled.div`
   margin-right: 24px;
 
-  /* Estilo para tablet */
   @media (max-width: ${breakpoints.tablet}) {
     margin-right: 0;
     margin-bottom: 16px;
@@ -101,7 +94,6 @@ export const SectionImgModal = styled.div`
     justify-content: center;
   }
 
-  /* Estilo para mobile */
   @media (max-width: ${breakpoints.mobile}) {
     margin-right: 0;
     margin-bottom: 12px;
@@ -114,13 +106,11 @@ export const ModalImage = styled.img`
   height: 280px;
   object-fit: cover;
 
-  /* Estilo para tablet */
   @media (max-width: ${breakpoints.tablet}) {
     width: 100%;
     height: auto;
   }
 
-  /* Estilo para mobile */
   @media (max-width: ${breakpoints.mobile}) {
     width: 100%;
     height: auto;

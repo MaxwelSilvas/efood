@@ -4,16 +4,13 @@ import { IMaskInput } from 'react-imask'
 import { Navigate, useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
 
-// Funções
 import { usePurchaseMutation } from '../../services/api'
 import { open } from '../../store/reducers/cart'
 import { getTotalPrice, parseToBrl } from '../../utils'
 
-// Componentes
 import Button from '../../components/Button'
 import Card from '../../components/Card'
 
-// Estilos
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
 import { clear } from '../../store/reducers/cart'
@@ -23,7 +20,7 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
   const [payWith, setPayWith] = useState(false)
   const [isOpenCart, setIsOpenCart] = useState(false)
 
-  const navigate = useNavigate() // Hook para navegação, substituindo o uso de `window.location.reload()`
+  const navigate = useNavigate()
 
   const [purchase, { data, isSuccess, isLoading }] = usePurchaseMutation()
   const { items } = useSelector((state: RootReducer) => state.cart)
@@ -115,9 +112,7 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
     return hasError
   }
 
-  // Função ajustada para verificar os campos de entrega antes de continuar
   const handleContinueToPayment = () => {
-    // Marcar todos os campos como tocados para exibir erros de validação
     form.setTouched({
       fullName: true,
       endereco: true,
@@ -131,7 +126,6 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
       expiresYear: true
     })
 
-    // Verificar se há erros nos campos obrigatórios e se os valores não estão vazios
     const isDeliveryValid =
       !form.errors.fullName &&
       !form.errors.endereco &&
@@ -159,7 +153,6 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
     dispatch(open())
   }
 
-  // Função ajustada para navegação sem recarregar a página
   const handleConclude = () => {
     setIsOpenCart(true)
     onClose()
@@ -172,7 +165,6 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
     openCart()
   }
 
-  // Redireciona para a página inicial se o carrinho estiver vazio
   if (items.length === 0 && !isSuccess) {
     return <Navigate to="/" />
   }

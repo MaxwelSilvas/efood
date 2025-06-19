@@ -1,4 +1,3 @@
-// Estilos
 import { JSX } from 'react'
 import * as S from './styles'
 

@@ -6,25 +6,22 @@ export const CardRestaurant = styled.div`
   width: 472px;
   height: 398px;
   position: relative;
-  /* Estilo para tablet */
+
   @media (max-width: ${breakpoints.tablet}) {
     max-width: 100%;
     height: auto;
   }
 
-  /* Estilo para mobile */
   @media (max-width: ${breakpoints.mobile}) {
     max-width: 100%;
     height: auto;
   }
 `
 export const CardConteiner = styled.div`
-  /* Estilo para tablet */
   @media (max-width: ${breakpoints.tablet}) {
     max-width: 100%;
   }
 
-  /* Estilo para mobile */
   @media (max-width: ${breakpoints.mobile}) {
     max-width: 100%;
   }
@@ -35,14 +32,12 @@ export const Imagem = styled.div`
   width: 472px;
   height: 217px;
   object-fit: cover;
-  background-size: 100%; /* Aqui estou garantindo que a imagem ocupe todo o espaço disponível */
+  background-size: 100%;
 
-  /* Estilo para tablet */
   @media (max-width: ${breakpoints.tablet}) {
     max-width: 100%;
   }
 
-  /* Estilo para mobile */
   @media (max-width: ${breakpoints.mobile}) {
     max-width: 100%;
   }
@@ -59,7 +54,6 @@ export const ContainerDescritivo = styled.div`
     font-weight: 700;
     text-align: left;
 
-    /* Estilo para mobile*/
     @media (max-width: ${breakpoints.mobile}) {
       font-size: 16px;
     }
@@ -73,13 +67,11 @@ export const ContainerDescritivo = styled.div`
     margin: 16px 8px;
     line-height: 19.09px;
 
-    /* Estilo para mobile */
     @media (max-width: ${breakpoints.mobile}) {
       padding-right: 8px;
     }
   }
 
-  /* Estilo para mobile */
   @media (max-width: ${breakpoints.mobile}) {
     position: relative;
     max-width: 100%;
@@ -89,23 +81,10 @@ export const ContainerDescritivo = styled.div`
   ${TagContainer} {
     margin: 0px 0px 8px 8px;
 
-    /* Estilo para mobile */
     @media (max-width: ${breakpoints.mobile}) {
       margin: 0;
     }
   }
-
-  /* Estilo para tablet */
-  /* @media (max-width: ${breakpoints.tablet}) {
-    width: 100%;
-    height: auto;
-  } */
-
-  /* Estilo para mobile */
-  /* @media (max-width: ${breakpoints.mobile}) {
-    width: 100%;
-    height: auto;
-  } */
 `
 export const RatingStar = styled.div`
   width: 21px;
@@ -120,7 +99,6 @@ export const LineSection = styled.div`
   justify-content: space-between;
   padding: 8px 8px 0 7px;
 
-  /* Estilo para mobile */
   @media (max-width: ${breakpoints.mobile}) {
     font-size: 14px;
     height: auto;
@@ -133,7 +111,6 @@ export const LineSection = styled.div`
     width: 26px;
     height: 21px;
 
-    /* Ajuste para mobile */
     @media (max-width: ${breakpoints.mobile}) {
       max-width: 100%;
       height: 20px;
