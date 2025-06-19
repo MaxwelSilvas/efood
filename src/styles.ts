@@ -1,12 +1,21 @@
+// Recursos externos
 import { createGlobalStyle } from 'styled-components'
 
 // #Definindo paleta de cores presente no projeto figma
 export const colors = {
-  rosePink: '#E66767',
-  palePeach: '#FFEBD9',
+  LightSalmon: '#E66767', //LightSalmon
+  BlanchedAlmond: '#FFEBD9', //BlanchedAlmond
   white: '#FFFFFF',
-  goldenYellow: '#FFB930',
-  creamyWhite: '#FFF8F2'
+  BrightOrange: '#FFB930', //BrightOrange
+  FloralWhite: '#FFF8F2', //FloralWhite
+  CrimsonRed: '#fae0e4'
+}
+
+/* Breakpoints */
+export const breakpoints = {
+  desktop: '1024px',
+  tablet: '768px',
+  mobile: '480px'
 }
 
 // #Inicializando as configurações Globais
@@ -23,8 +32,8 @@ export const GlobalCSS = createGlobalStyle`
 
   /* Define o estilo global para o corpo da página */
   body {
-    background-color: ${colors.creamyWhite}; /* Define a cor de fundo principal */
-    color:${colors.rosePink};/* Define a cor da fonte global */
+    background-color: ${colors.FloralWhite}; /* Define a cor de fundo principal */
+    color:${colors.LightSalmon};/* Define a cor da fonte global */
     font-family:Roboto, sans-serif; /* definindo a font global no projeto */
     text-decoration: none;/* remover qualquer decoração de texto como links ou li */
     list-style-type: none;
@@ -32,7 +41,32 @@ export const GlobalCSS = createGlobalStyle`
   .container {
   max-width: 1366px; /* largura total do container central do projeto */
   width: 100%; /* preenchimento de todo container */
-  margin: 0 auto; /* removendo as margens ao mesmo tempo que centralizo o container junto com seus elementos */
+  margin: 0 auto; /* centralizando o container */
+  padding: 0 20px; /* adicionando um padding para as laterais */
+
+  /* Estilo para desktop */
+@media (max-width: ${breakpoints.desktop}) {
+  .container {
+    max-width: 1024px;
+    padding: 0 16px; /* ajuste de padding para telas menores */
+  }
+}
+
+/* Estilo para tablet */
+@media (max-width: ${breakpoints.tablet}) {
+  .container {
+    max-width: 768px;
+    padding: 0 12px;
+  }
+}
+
+/* Estilo para mobile */
+@media (max-width: ${breakpoints.mobile}) {
+  .container {
+    max-width: 480px;
+    padding: 0 8px;
+  }
+}
 }
 
 `

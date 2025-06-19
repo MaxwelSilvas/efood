@@ -1,20 +1,29 @@
+// Recursos externos
 import React, { useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
-import { CardapioItem, Efood } from '../../services/api'
+
+// Funções
+
+// Componentes
 import Product from '../Product'
+
+// Estilos
+import Loader from '../Loader'
 import { ProductListContainer, ProductListItem } from './styles'
 
 export type Props = {
   title: string
   background: 'light' | 'dark'
-  efoods: Efood[] | CardapioItem[]
+  efoods?: Efood[] | CardapioItem[]
   isCardapio?: boolean
+  isLoading?: boolean
 }
 
 const ProductList: React.FC<Props> = ({
   title,
   background,
   efoods,
+  isLoading,
   isCardapio = false
 }) => {
   const { id } = useParams<{ id: string }>()
@@ -22,9 +31,6 @@ const ProductList: React.FC<Props> = ({
   const [catalogoServico, setCatalogoServico] = useState<
     Efood[] | CardapioItem[]
   >([])
-  const [currentItemModal, setCurrentItemModal] = useState<CardapioItem | null>(
-    null
-  )
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,16 +48,12 @@ const ProductList: React.FC<Props> = ({
       }
     }
 
-    if (efoods.length === 0) {
+    if (efoods && efoods.length === 0) {
       fetchData()
     } else {
-      setCatalogoServico(efoods)
+      setCatalogoServico(efoods ?? []) // Default to an empty array if efoods is undefined
     }
   }, [id, efoods])
-
-  const handleButtonClick = (item: CardapioItem) => {
-    setCurrentItemModal(item)
-  }
 
   const getEfoodTags = (efood: Efood) => {
     const tags: string[] = []
@@ -62,6 +64,10 @@ const ProductList: React.FC<Props> = ({
       tags.push('Destaque da semana')
     }
     return tags
+  }
+
+  if (isLoading) {
+    return <Loader />
   }
 
   return (
